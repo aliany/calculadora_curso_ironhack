@@ -24,95 +24,121 @@ function init(){
   var zero = document.getElementById('zero');
 }
 
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 //Eventos de click
   one.onclick = function(e){
-      result.textContent = result.textContent  + "1";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "1";
   }
   two.onclick = function(e){
-      result.textContent = result.textContent  + "2";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "2";
   }
   three.onclick = function(e){
-      result.textContent = result.textContent  + "3";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "3";
   }
   four.onclick = function(e){
-      result.textContent = result.textContent  + "4";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent + "4";
   }
   five.onclick = function(e){
-      result.textContent = result.textContent  + "5";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "5";
   }
   six.onclick = function(e){
-      result.textContent = result.textContent  + "6";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "6";
   }
   seven.onclick = function(e){
-      result.textContent = result.textContent  + "7";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "7";
   }
   eight.onclick = function(e){
-      result.textContent = result.textContent  + "8";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "8";
   }
   nine.onclick = function(e){
-      result.textContent = result.textContent  + "9";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "9";
   }
   zero.onclick = function(e){
-      result.textContent = result.textContent  + "0";
+    if (result.textContent == "0") { clear(); }
+    if (result.textContent.length < 15) result.textContent = result.textContent  + "0";
   }
   reset.onclick = function(e){
-      resetear();
+      to_reset();
+      sum.style.color = 'black';
+      subtraction.style.color = 'black';
+      multiplication.style.color = 'black';
+      division.style.color = 'black';
   }
   sum.onclick = function(e){
       variablea = result.textContent;
       operation = "+";
-      limpiar();
+      clear();
+      sum.style.color = 'red';
   }
   subtraction.onclick = function(e){
       variablea = result.textContent;
       operation = "-";
-      limpiar();
+      clear();
+      subtraction.style.color = 'red';
   }
   multiplication.onclick = function(e){
       variablea = result.textContent;
       operation = "*";
-      limpiar();
+      clear();
+      multiplication.style.color = 'red';
   }
   division.onclick = function(e){
       variablea = result.textContent;
       operation = "/";
-      limpiar();
+      clear();
+      division.style.color = 'red';
   }
   equal.onclick = function(e){
       variableb = result.textContent;
-      resolver();
+      resolv();
+      sum.style.color = 'black';
+      subtraction.style.color = 'black';
+      multiplication.style.color = 'black';
+      division.style.color = 'black';
   }
 
-  function limpiar(){
+  function clear(){
     result.textContent = "";
   }
 
-  function resetear(){
-    result.textContent = "";
+  function to_reset(){
+    result.textContent = "0";
     variablea = 0;
     variableb = 0;
     operation = "";
   }
 
-  function resolver(){
-    var res = 0;
+  function resolv(){
+    var to_result = 0;
     switch(operation){
       case "+":
-        res = parseFloat(variablea) + parseFloat(variableb);
+        to_result = round((parseFloat(variablea) + parseFloat(variableb)), 12);
         break;
 
       case "-":
-        res = parseFloat(variablea) - parseFloat(variableb);
+        to_result = round((parseFloat(variablea) - parseFloat(variableb)), 12);
         break;
 
       case "*":
-        res = parseFloat(variablea) * parseFloat(variableb);
+        to_result = round((parseFloat(variablea) * parseFloat(variableb)), 12);
         break;
 
       case "/":
-        res = parseFloat(variablea) / parseFloat(variableb);
+        to_result = round((parseFloat(variablea) / parseFloat(variableb)), 12);
         break;
   }
-  resetear();
-    result.textContent = res;
+  to_reset();
+    result.textContent = to_result;
 }
